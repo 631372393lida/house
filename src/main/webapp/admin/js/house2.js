@@ -3,8 +3,8 @@ $(function(){
 
     //使用datagrid绑定数据展示
     $('#dg').datagrid({
-        title:"审核出租房管理",
-        url:'/getHouseNopass',
+        title:"已审核出租房管理",
+        url:'/getHouseYespass',
         fitColumns: true,
         pagination: true,
         pageList: [5, 10, 15, 20],
@@ -20,14 +20,14 @@ $(function(){
             { field: 'sname', title: '街道', width: 50, align: "center" },
             { field: 'tname', title: '类型', width: 50, align: "center" },
             { field: 'ispass', title: '状态', width: 50, align: "center" ,formatter:function(value,row,index){
-                return "未审核";
+                return "已审核";
 
                 }
             },
             { field: 'opt', title: '操作', width: 50, align: "center",
                 formatter: function(value,row,index){
 
-                    return "<a href='javascript:checkPass("+row.id+")'>审核</a>";
+                    return "<a href='javascript:delSingle("+row.id+")'>审核</a>";
                 }
             }
         ]]
@@ -50,15 +50,3 @@ function searchUser(){
 
 }
 
-//审核通过
-function checkPass(id) {
-    $.post("/passHouse",{"id":id},function (data) {
-        if(data.result>0){
-            $.messager.alert('提示框','成功');
-            $("#dg").datagrid("reload");
-        }else {
-            $.messager.alert('提示框','失败');
-        }
-    },"json");
-
-}

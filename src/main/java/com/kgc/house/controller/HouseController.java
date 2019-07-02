@@ -33,11 +33,23 @@ import java.util.Map;
 
     //查询已审核
     @RequestMapping("/getHouseYespass")
+    @ResponseBody
     public Map<String,Object> getHouseYespass(Integer page,Integer rows){
         PageInfo<House> houseBytate = houseService.getHouseBytate(page, rows, 1);
         Map<String,Object> map=new HashMap<>();
         map.put("total",houseBytate.getTotal());
         map.put("rows",houseBytate.getList());
+        return map;
+
+    }
+
+
+    //通过审核
+    @RequestMapping("/passHouse")
+    public Map<String,Object> passHouse(String id){
+        int temp = houseService.passHoues(id);
+        Map<String,Object> map=new HashMap<>();
+        map.put("result",temp);
         return map;
 
     }

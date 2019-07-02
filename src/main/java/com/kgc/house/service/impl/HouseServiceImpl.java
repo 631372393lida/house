@@ -57,4 +57,12 @@ public class HouseServiceImpl implements HouseService {
 
         return new  PageInfo<House>(houseBytate);
     }
+
+    @Override
+    public int passHoues(String id) {
+        House house=new House();
+        house.setId(id);
+        house.setIspass(1);   //通过审核
+        return houseMapper.updateByPrimaryKeySelective(house);
+    }
 }

@@ -26,4 +26,7 @@ public interface HouseService {
     //查询出租房
     public PageInfo<House> getHouseBytate(Integer page,Integer rows,Integer ispass);
 
+    //审核出租房
+    public  int passHoues(String id);
+
 }
