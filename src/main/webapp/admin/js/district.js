@@ -176,7 +176,7 @@ function DeleteByFruitName() {
 }
 
 
-
+//显示所有街道
 function selectstreet(obj) {
     $("#streetDialog").dialog("open").dialog('setTitle',"查看街道");
     $('#streetDg').datagrid({
