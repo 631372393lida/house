@@ -46,6 +46,7 @@ import java.util.Map;
 
     //通过审核
     @RequestMapping("/passHouse")
+    @ResponseBody
     public Map<String,Object> passHouse(String id){
         int temp = houseService.passHoues(id);
         Map<String,Object> map=new HashMap<>();
